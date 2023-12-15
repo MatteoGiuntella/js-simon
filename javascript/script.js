@@ -8,25 +8,38 @@ let flag = true
 let numberVisual = [];
 console.log(numberVisual)
 
+setInterval(function(){ 
+    prompt("inserisci i tuoi numeri"); 
+}, 32000);
+
+var timeleft = 30;
+var downloadTimer = setInterval(function(){
+  if(timeleft <= 0){
+    clearInterval(downloadTimer);
+    document.getElementById("countdown").innerHTML = "Finished";
+  } else {
+    document.getElementById("countdown").innerHTML = timeleft + " seconds remaining";
+  }
+  timeleft -= 1;
+}, 1000);
+
 
 for (let i = 0; i < 5; i++) {
 
     let numberList = (randonNumber(1, 5))
-
     numberVisual.push(numberList)
-    document.write(numberVisual[i])
+
+    if((downloadTimer > 0) && ( downloadTimer < 30)){
+        flag = true
+        document.write(numberVisual[i])
+    }
+    else{
+        flag  = false
+        document.write('')
+    }
 }
 
 //  qui sopra ho creato una flag e tramite la funzione ho generato 5 numeri random che successivamente ho pushato nel array vuoto e poi stampato in html
-
-
-
-
-
-
-
-
-
 
 
 
